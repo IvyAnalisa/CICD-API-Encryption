@@ -17,8 +17,7 @@ jobs:
         with:
           dotnet-version: '8.x'
     
-      - name: Build project
-        run:
+     
       
       - name: Restore dependencies
         run: dotnet restore CryptoAPI/CryptoAPI.csproj
