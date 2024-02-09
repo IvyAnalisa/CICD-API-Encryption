@@ -19,7 +19,7 @@ jobs:
     
       - name: Build project
         run: 
-        dotnet restore; dotnet publish -o site;
+          dotnet restore; dotnet publish -o site;
 
       - name: create zip package
         run: cd site; zip ../site.zip *;
