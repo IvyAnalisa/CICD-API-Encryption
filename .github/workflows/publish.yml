@@ -20,8 +20,12 @@ jobs:
       - name: Build project
         run:
       
-          dotnet restore CryptoAPI/CryptoAPI.csproj
-          dotnet publish  -o site 
+      - name: Restore dependencies
+        run: dotnet restore CryptoAPI/CryptoAPI.csproj
+
+      - name: Publish project
+        run: dotnet publish CryptoAPI/CryptoAPI.csproj -o site
+
 
       - name: create zip package
         run: cd site; zip ../site.zip *;
