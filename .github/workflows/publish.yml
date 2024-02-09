@@ -1,4 +1,4 @@
-name: Publish docker image
+name: Publish AWS
 
 on:
   push:
@@ -17,10 +17,8 @@ jobs:
         with:
           dotnet-version: '8.x'
     
-      - name: Restore dependencies
-        run: dotnet restore 
+      - name: Build project
+        run: dotnet restore; dotnet publish -o site;
 
-      - name: Build
-        run: dotnet build --configuration Release 
-      - name: Test
-        run: dotnet test 
+      
+
