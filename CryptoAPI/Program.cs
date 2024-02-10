@@ -37,7 +37,7 @@ else
 
 
 
-app.UseStaticFiles();
+//app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
