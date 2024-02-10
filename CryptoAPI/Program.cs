@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Add CORS middleware to allow requests from all origins (for development purposes)
-app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+//app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
 //Configure the HTTP request pipeline.
@@ -19,29 +19,19 @@ app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-}
-else
-{
-    // For non-development environments (e.g., production), use the AWS Elastic Beanstalk domain for Swagger UI
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("https://encryptionapi-env.eba-tyihg6pz.eu-north-1.elasticbeanstalk.com/swagger/v1/swagger.json", "My API V1");
-    });
+    app.UseSwaggerUI();
 }
 
 
 
 
-//app.UseStaticFiles();
+
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/", () => "Hello, let's do some fun!");
 
 app.Run();
