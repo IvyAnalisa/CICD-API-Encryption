@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,9 +41,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", (IWebHostEnvironment env) => {
+app.MapGet("/", () => "Hello World v2!");
+/*app.MapGet("/", (IWebHostEnvironment env) => {
     // Serve the index.html file from the wwwroot folder
     return File.ReadAllText(Path.Combine(env.WebRootPath, "index.html"));
-});
+});*/
 
 app.Run();
