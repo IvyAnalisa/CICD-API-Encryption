@@ -15,8 +15,7 @@ Git and GitHub will be used throughout the project. All code will be written in 
 The API will be published on AWS Elastic Beanstalk using GitHub Actions for automated deployment.
 ## Test Url:
 ##### Encrypt
-(http://encryptionapi-env.eba-tyihg6pz.eu-north-1
-.elasticbeanstalk.com/Crypto/encrypt?text=iloveyou)
+(http://encryptionapi-env.eba-tyihg6pz.eu-north-1.elasticbeanstalk.com/Crypto/encrypt?text=iloveyou)
 
 
 
