@@ -41,7 +41,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", () => "Hello World v2!");
+app.MapGet("/Crypto", () => "Hello World v2!");
 /*app.MapGet("/", (IWebHostEnvironment env) => {
     // Serve the index.html file from the wwwroot folder
     return File.ReadAllText(Path.Combine(env.WebRootPath, "index.html"));
