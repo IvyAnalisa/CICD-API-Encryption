@@ -1,3 +1,10 @@
+using ServiceStack.Text;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,6 +39,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", () => "Hello, let's do some fun!");
+app.MapGet("/", (IWebHostEnvironment env) => {
+    // Serve the index.html file from the wwwroot folder
+    return File.ReadAllText(Path.Combine(env.WebRootPath, "index.html"));
+});
 
 app.Run();

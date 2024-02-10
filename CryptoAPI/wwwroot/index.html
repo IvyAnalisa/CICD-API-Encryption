@@ -4,6 +4,11 @@
     <title>index</title>
 </head>
 <body>
-    
+    <h1>Encryption API Test</h1>
+    <form id="encryptionForm" action="http://encryptionapi-env.eba-tyihg6pz.eu-north-1.elasticbeanstalk.com/encrypt" method="POST">
+        <label for="plainText">Enter text to encrypt:</label><br>
+        <input type="text" id="plainText" name="plainText"><br><br>
+        <button type="submit">Encrypt</button>
+    </form>
 </body>
 </html>
