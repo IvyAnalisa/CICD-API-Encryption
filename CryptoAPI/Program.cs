@@ -112,6 +112,6 @@ app.MapGet("/Crypto", () =>
 
     Results.Content(htmlString, "text/html");
 });
-
+app.MapGet("/helloweb", () => Results.Content("<h1>Hello World v2 web!</h1>", "text/html"));
 
 app.Run();
