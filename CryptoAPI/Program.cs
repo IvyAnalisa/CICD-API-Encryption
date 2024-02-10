@@ -10,6 +10,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Add CORS middleware to allow requests from all origins (for development purposes)
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+
 //Configure the HTTP request pipeline.
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
