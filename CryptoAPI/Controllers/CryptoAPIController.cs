@@ -5,7 +5,7 @@ namespace CryptoAPI.Controllers
     [ApiController]
     [Route("[controller]")]
     public class CryptoController : ControllerBase
-    {   /*
+    {   
         // Encryption endpoint
         [HttpPost("encrypt")]
         public IActionResult Encrypt([FromBody] string plainText)
@@ -26,7 +26,7 @@ namespace CryptoAPI.Controllers
             string encryptedText = new string(chars);
 
             return Ok(new { encryptedText });
-        }*/
+        }
         // Decryption endpoint
         [HttpPost("decrypt")]
         public IActionResult Decrypt([FromBody] string encryptedText)
@@ -51,7 +51,7 @@ namespace CryptoAPI.Controllers
 
         // GET /encrypt endpoint
         [HttpGet("encrypt")]
-        public IActionResult Encrypt([FromQuery] string text)
+        public IActionResult GetEncrypt([FromQuery] string text)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -75,6 +75,34 @@ namespace CryptoAPI.Controllers
 
             return Ok(new { encryptedText });
         }
+
+        // Decryption endpoint
+        [HttpGet("decrypt")]
+        public IActionResult GetDecrypt([FromQuery] string encryptedText)
+        {
+            if (string.IsNullOrEmpty(encryptedText))
+            {
+                return BadRequest("Encrypted text is required.");
+            }
+
+            // Reverse the encryption process
+            char[] chars = encryptedText.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (char.IsLetter(chars[i]))
+                {
+                    chars[i] = (char)(chars[i] - 3);
+                    if (!char.IsLetter(chars[i]))
+                    {
+                        chars[i] = (char)(chars[i] + 26);
+                    }
+                }
+            }
+            string decryptedText = new string(chars);
+
+            return Ok(new { decryptedText });
+        }
+
 
     }
 }
