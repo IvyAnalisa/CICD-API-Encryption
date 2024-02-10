@@ -15,7 +15,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("http://encryptionapi-env.eba-tyihg6pz.eu-north-1.elasticbeanstalk.com/swagger/v1/swagger.json", "My API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
+}
+else
+{
+    // For non-development environments (e.g., production), use the AWS Elastic Beanstalk domain for Swagger UI
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("https://encryptionapi-env.eba-tyihg6pz.eu-north-1.elasticbeanstalk.com/swagger/v1/swagger.json", "My API V1");
     });
 }
 
