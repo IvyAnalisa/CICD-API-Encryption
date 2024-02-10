@@ -110,7 +110,7 @@ app.MapGet("/Crypto", () =>
     </body>
     </html>";
 
-    return htmlString;
+    Results.Content(htmlString, "text/html");
 });
 
 
