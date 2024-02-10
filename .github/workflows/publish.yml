@@ -12,13 +12,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Set up .NET 8.x
+      - name: Set up .NET 6.x
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '6.x'
     
-      - name: Build project
-        run: dotnet restore; dotnet publish -o site;
+     
+      
+      - name: Restore dependencies
+        run: dotnet restore CryptoAPI/CryptoAPI.csproj
+
+      - name: Publish project
+        run: dotnet publish CryptoAPI/CryptoAPI.csproj -o site
+
 
       - name: create zip package
         run: cd site; zip ../site.zip *;
